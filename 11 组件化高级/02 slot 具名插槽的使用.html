@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 只会替换无name的插槽 -->
+    <cpn :son_message='message'><span>替换</span></cpn>
+    <!-- 替换具名插槽 -->
+    <cpn :son_message='message'><span slot='mid'>标题</span></cpn>
+  </div>
+
+  <template id='cpn'>
+    <div>
+      <h2>{{son_message}}</h2>
+      <slot name='left'><span>左</span></slot>
+      <slot name='mid'><span>中</span></slot>
+      <slot name='right'><span>右</span></slot>
+      <slot></slot>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        son_message: {
+          type: String
+        }
+      },
+      data() {
+        return {
+          result: '子组件变量'
+        }
+      },
+      methods: {}
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用'
+      },
+      components: {
+        cpn
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

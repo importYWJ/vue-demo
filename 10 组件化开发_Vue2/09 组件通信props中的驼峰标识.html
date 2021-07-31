@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <!-- v-bind 不支持驼峰 新版本有修改？ -->
+    <cpn :c-message='message'></cpn>
+  </div> 
+  <template id='cpn'>
+    <div>
+      <h2>{{cMessage}}</h2>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        cmessage: {
+          type: String
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用'
+      },
+      components: {
+        cpn  // 为'cpn': cpn的语法糖写法
+      }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2>{{totalPrice}}</h2>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+        books: [
+          { id: 110, name: 'Vue大全', price: 119 },
+          { id: 110, name: '深入理解计算机原理', price: 144 },
+        ]
+      },
+      computed: {
+        //常用高级函数：filter/map/reduce 
+        // totalPrice: this.books.reduce( 
+        //   function (pre,cur) {
+        //   return pre+cur.score;
+        // },0)
+        totalPrice: function () {
+          let result = 0;
+          for (let i = 0; i < this.books.length; i++) {
+            result += this, books[i].price
+          }
+          return result;
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

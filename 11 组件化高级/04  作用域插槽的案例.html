@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :son_message='message'></cpn>
+    <cpn>
+      <!-- 目的：获取子组件中的movies变量 -->
+      <div slot-scope="chacao">
+        <!-- 方法一 -->
+        <!-- <span v-for='item in chacao.value'>{{item}} - </span> -->
+        <!-- 方法二 -->
+        <span>{{chacao.value.join(' - ')}}</span>
+      </div>
+    </cpn>
+  </div>
+
+  <template id='cpn'>
+    <div>
+      <h2>{{son_message}}</h2>
+      <slot :value='movies'>
+        <ul>
+          <li v-for='item in movies'>{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        son_message: {
+          type: String
+        }
+      },
+      data() {
+        return {
+          movies: ['海贼王', '斗破苍穹', '火影忍者', '爱在黎明破晓前', '东京爱情故事']
+        }
+      },
+      methods: {}
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        
+      }
+    })
+  </script>
+</body>
+
+</html>

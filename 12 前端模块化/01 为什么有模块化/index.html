@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    1. 项目组长(搭框架main.js)
+    2. 小明
+  -->
+  <!-- a的flag变量为false, b的flag变量为true，后导入的把前导入的变量覆盖(后导入的优先级高) -->
+  <script src="b.js"></script>
+  <script src="a.js"></script>
+  <!-- var变为let后，不同js文件变量不共用，且报错重复变量 -->
+  <script src="b2.js">
+  </script>
+</body>
+</html>

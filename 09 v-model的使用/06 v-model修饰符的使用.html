@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <!-- 初始：实时绑定 -->
+    <input type="text" name="" id="" v-model='message'>{{message}}
+    <!-- 1.修饰符: lazy -->
+    <br>
+    <input type="text" name="" id="" v-model.lazy='message'>{{message}}
+    <!-- 2.修饰符: number -->
+    <br>
+    <input type="number" name="" id="" v-model.number='message'>{{message}} + {{typeof message}}
+    <!-- 3.修饰符: trim -->
+    <br>
+    <input type="text" name="" id="" v-model.trim='message'>{{message}} + {{typeof message}}
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: 123213
+      },
+      computed: {
+
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

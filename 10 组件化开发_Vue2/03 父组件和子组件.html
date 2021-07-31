@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <!-- <h2>{{message}}</h2> -->
+    <!-- <cpn1></cpn1> -->
+    <cpn2></cpn2>
+  </div>
+  <script>
+    // 1. 创建组件构造器
+    const cpnC1 = Vue.extend({
+      template: `
+        <div>
+          <h2>组件1加载成功</h2>
+        </div>
+      `,
+    })
+    const cpnC2 = Vue.extend({
+      template: `
+          <h2>组件2加载成功</h2>
+          <cpn1></cpn1>
+      `,
+      components: {
+        cpn1: cpnC1
+      }
+    })
+    // 2.注册组件（全局组件：可以在多个Vue实例中使用）
+    // Vue.component('cpn', spnC)
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+      },
+      computed: {
+
+      },
+      filter: {
+
+      },
+      components: {
+        // 局部组件, 使用必须先注册
+        // cpn1: cpnC1,  // 标签名: 构造器
+        cpn2: cpnC2
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

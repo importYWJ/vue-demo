@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{fullName}}</h2>
+  </div>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+        lastName: 'yan',
+        firstName: 'wujie'
+      },
+      computed: {
+        // 完整形式
+        fullName: {
+          //  set: function(newValue) {
+          //   // 一般没有set方法，即只读属性;
+          //  },
+          get: function () {
+            return this.firstName + ' ' + this.lastName;
+          }
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

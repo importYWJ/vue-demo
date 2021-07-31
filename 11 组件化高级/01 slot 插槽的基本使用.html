@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :son_message='message'></cpn>
+    <cpn></cpn>
+    <cpn>
+      <span>插槽文本</span>
+    </cpn>
+    <cpn>
+      <a href="">第一个插槽超链接</a>
+      <a href="">第二个插槽超链接</a>
+    </cpn>
+
+  </div>
+
+  <template id='cpn'>
+    <div>
+      <!-- 1. 插槽相当于预备一个预留空间，具备扩展性 -->
+      <!-- 2. 插槽可设置默认标签 -->
+      <!-- 3. 多个标签，则同时替换插槽 -->
+      <slot><button>插槽默认按钮</button></slot>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        son_message: {
+          type: String
+        }
+      },
+      data() {
+        return {
+          result: '子组件变量'
+        }
+      },
+      methods: {}
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用'
+      },
+      components: {
+        cpn
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

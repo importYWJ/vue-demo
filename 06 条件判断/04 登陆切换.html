@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+<body>
+  <!-- 注意点：
+    Vue在进行DOM渲染时，出于性能考虑，会尽可能的复用已经存在的元素；
+    此案例中Vue发现原来的input元素不再使用，直接作为else中的input使用
+    操作：先把要渲染内容通过虚拟DOM放到内存中，则尽可能复用
+    改为false时，不重新产生label，input，而是直接复用
+  -->
+  <div id="app">
+    <span v-if='isUser'>
+      <label for="username">用户账号</label>
+      <input type="text" name="" id="username" placeholder="用户账号" key='account'> 
+    </span>>
+    <span v-else>
+      <label for="username">用户邮箱</label>
+      <input type="text" name="" id="username" placeholder="用户邮箱" key='email'>
+      </span>
+    <button @click='isUser = !isUser'>切换类型</button>
+    
+  </div>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {                     
+        message: '用户账号',
+        isUser: true
+      },
+      computed: {
+
+      },
+      methods: {
+        change() {
+          if (this.message === '用户账号'){
+            this.message = '用户邮箱'
+          } 
+          else if(this.message === '用户邮箱'){
+            this.message = '用户账号'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

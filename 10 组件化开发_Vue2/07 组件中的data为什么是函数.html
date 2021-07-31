@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 原因：组件被复用时不能共享数据，故每次用函数创建 -->
+  <div id="app">
+    <cpn></cpn>
+    <cpn></cpn>
+
+  </div>
+
+  <template id='cpn1'>
+    <div>
+        <h2>{{message}} {{count}}</h2>
+        <button @click='add'>+</button>
+        <button @click='minor'>-</button>
+    </div>
+  </template>
+  
+  <script>
+    Vue.component('cpn', {
+      template: '#cpn1',
+      data() {
+        return {
+          message: '当前计数：',
+          count: 0
+        }
+      },
+      methods: {
+        add() {
+          this.count++;
+        },
+        minor() {
+          this.count--;
+        }
+      }
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {},
+      component: {
+        // cpn: 'cpnC1'
+      },
+      filters: {},
+      cpmputed: {},
+      methods: {}
+    })
+  </script>
+</body>
+
+</html>

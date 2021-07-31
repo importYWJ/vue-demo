@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <!-- 父组件模板 -->
+  <div id="app">
+    <cpn @item-click='cpnClick'></cpn>
+  </div>
+  <!-- 子组件模板 -->
+  <template id='cpn'>
+    <div>
+      <button v-for='item in categories' @click='btnClick()'>{{item.name}}</button>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: ['cmessage'],
+      data() {
+        return {
+          categories: [
+            { id: 'a', name: '热门推荐' },
+            { id: 'a', name: '手机数码' },
+            { id: 'a', name: '家用家电' },
+            { id: 'a', name: '电脑办公' }
+          ]
+        }
+      },
+      methods: {
+        // 默认传入事件
+        btnClick(item) {
+          // console.log(item);
+          // 发射事件： 自定义事件
+          this.$emit('item-click', item)
+          console.log('子组件传递经过');
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用'
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        cpnClick(item) {
+          console.log('父组件传递到达');
+          console.log(item);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

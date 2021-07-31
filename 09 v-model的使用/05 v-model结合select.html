@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <select name="" id="" v-model='fruit'>
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="橘子">橘子</option>
+      <option value="榴莲">榴莲</option>
+    </select>
+    <h2>选择的是{{fruit}}</h2>
+    <!-- 2. 多选 -->
+    <select name="" id="" v-model='fruits' multiple>
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="橘子">橘子</option>
+      <option value="榴莲">榴莲</option>
+    </select>
+    <h2>选择的是{{fruits}}</h2>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+        fruit: '',
+        fruits: ''
+      },
+      computed: {
+
+      },
+      methods: {
+        valueChange(event) {
+          this.message = event.target.value;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

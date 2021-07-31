@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <h2>{{message}}</h2>
+    <cpn1></cpn1>
+    <cpn2></cpn2>
+  </div>
+
+  <!-- 模板写法1： 类型必须是"text/x-template" -->
+  <script type="text/x-template" id='cpn1'>
+    <div>
+      <h2>模板分离组件写法1加载成功</h2>
+    </div>
+  </script>
+  <!-- 模板写法2：template标签 -->
+  <template id='cpn2'>
+    <div>
+      <h2>模板分离组件写法2加载成功</h2>
+    </div>
+  </template>
+
+  <script>
+    // 全局注册的语法糖
+    // 1. 组件构造器 + 注册 （内部还是调用extend）
+    Vue.component('cpn1', {
+      template: '#cpn1'
+    })
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+      },
+      computed: {
+
+      },
+      filter: {
+
+      },
+      components: {
+        // 局部组件
+        cpn2: {
+          template: '#cpn2'
+        },  // 标签名: 构造器
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+
+</html>

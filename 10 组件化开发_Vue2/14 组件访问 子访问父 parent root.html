@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :son_message='message'></cpn>
+    <cpn :son_message='message'></cpn>
+    <cpn :son_message='message' ref='test'></cpn>
+  </div>
+
+  <template id='cpn'>
+    <div>
+      <button @click='btnClick'>访问父组件</button>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        son_message: {
+          type: String
+        }
+      },
+      data() {
+        return {
+          result: '子组件变量'
+        }
+      },
+      methods: {
+        btnClick() {
+          // 1. 访问父组件 $parent
+          console.log(this.$parent);
+          //  1. 访问根组件 $root
+          console.log(this.$root.message);
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用'
+      },
+      components: {
+        cpn
+      },
+      methods: {
+
+        }
+    })
+  </script>
+</body>
+
+</html>

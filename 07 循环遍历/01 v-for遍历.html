@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <li v-for="(item, index) in items" :key="index">
+      {{item.message}} : {{index + 1}}
+    </li>
+    输入文本： <input type="text" v-model="ok"> {{ok}}
+    <div>{{name}}</div>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: "#app",   //元素绑定
+      data: {
+        items: [
+          { message: '狂神说JAVA', value: 12 },
+          { message: '狂神说前端', value: 11232 },
+          { message: '狂神说运维', value: 1231231232 }
+        ],
+        ok: 123,
+        name: 'yanwujie'
+      }
+    })
+  </script>
+</body>
+
+</html>

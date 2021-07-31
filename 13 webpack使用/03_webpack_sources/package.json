@@ -1,0 +1,23 @@
+{
+  "name": "basic_webpack",
+  "version": "1.0.0",
+  "description": "打包测试",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^5.2.6",
+    "file-loader": "^6.2.0",
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
+    "postcss": "^8.3.5",
+    "postcss-cli": "^8.3.1",
+    "style-loader": "^3.1.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
+  }
+}

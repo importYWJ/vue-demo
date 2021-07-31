@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <!-- input双向绑定，且子组件和父组件的数据同步改变 -->
+  <!-- 1. 直接绑定：只改变子组件数据。避免直接改变属性，因为每当父组件重新渲染时，该值将被覆盖。使用基于[props]值的数据或计算属性 -->
+  <!-- 不推荐直接在子组件中修改父组件传来的props的值 -->
+  <div id="app">
+    <!-- {{message}} -->
+    <cpn :newnum='num1' @num1change='cpnClick'></cpn>
+    <h2>父组件结果：{{num1}}</h2>
+  </div>
+  <template id='cpn'>
+    <div>
+      <h2>子组件结果：{{newnum}}</h2>
+      <!-- <input type="text" v-model='newnum' @input='valueChange'> -->
+      <input type="text" :value='newnum' @input='valueChange'>
+    </div>
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      props: {
+        son_num: {
+          type: Number
+        },
+        name: ''
+      },
+      data() {
+        return {
+          newnum: this.son_num
+        }
+      },
+      methods: {
+        valueChange() {
+          this.newnum = event.target.value;
+          this.$emit('num1change', this.newnum);  // 改了data之后发射出事件传到父组件，监听事件修改值
+          // 进一步修饰
+        }
+      },
+      wacth: {
+        name(newValue, OldVaule) {
+          // 监听属性值的改变
+          this.name = newValue * 100;
+          this.$emit('nameChange', newValue)
+        }
+      }
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+        num1: 1,
+        num2: 2
+      },
+      components: {
+        cpn
+      },
+      methods: {
+        cpnClick(result) {
+          this.num1 = parseInt(result)
+        }
+      },
+      filter: {},
+      computed: {
+      }
+    })
+  </script>
+</body>
+
+</html>

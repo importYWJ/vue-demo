@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title >
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">{{counter}}
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+  </div>
+  <script>
+    var vm = new Vue({ 
+      el: "#app",   //元素绑定
+      data: {
+        counter: 0
+      },
+      methods: {
+        add: function(){
+          console.log('add被执行');
+          this.counter++;
+        },
+        sub: function(){
+          console.log('sub被执行');
+          this.counter--;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+

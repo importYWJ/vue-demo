@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 编程范式：命令式编程(传统)/声明式编程(Vue)
+    // 编程范式：面向对象编程（第一公民：对象）/函数式编程（第一公民：函数）
+
+    const nums = [123, 1223, 23, 123, 46, 787, 45, 234547]
+    // 高阶函数1. filters()
+    // 要求：必须返回一个boolean值 true:当返回true时，函数内部会将这次回调的n加入新数组， false:函数内部会过滤掉这次的n
+    let newNums_filter = nums.filter(function (n) {
+      return n < 100
+    })
+    console.log('filters: ' + newNums_filter);
+    // 高阶函数3. map()
+    let newNums_map = newNums_filter.map(function (n) {
+      return n * 2
+    })
+    console.log('maps: ' + newNums_map); //maps: 46,92,90
+    // 高阶函数3. reduce(前value, 现value, 现index, array)  对数组中所有内容进行汇总
+    let newNums_reduce = newNums_map.reduce(function (preValue, n) {
+      return preValue + n
+    }, 0)
+    console.log('reduce: ' + newNums_reduce);
+    // 第一次：preValue:0 ; n:46 
+    // 第二次：preValue:46 ; n:92
+    // 第三次：preValue:138 ; n:90
+    // 228
+    let total = nums.filter(function (n) {
+      return n < 100
+    }).map(function (n) {
+      return n * 2
+    }).reduce(function (prevalue, n) {
+      return prevalue + n
+    }, 0)
+    console.log('total: ' + total);
+  </script>
+</body>
+
+</html>

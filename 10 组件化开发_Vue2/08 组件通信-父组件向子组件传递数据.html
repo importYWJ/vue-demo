@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../../js/vue.js"></script>
+</head>
+
+<body>
+  <div id='app'>
+    <!-- <h2>{{message}}</h2> -->
+    <!-- <cpn1></cpn1> -->
+    <cpn :son_message='message' :son_movies='movies'></cpn>
+  </div>
+  
+  <template id='cpn'>
+    <div>
+      <h2>{{son_message}}</h2>
+      <h2 v-for="item in son_movies">{{item}}</h2>
+    </div>
+
+    </h2>
+
+  </template>
+  <script>
+    const cpn = {
+      template: '#cpn',
+      // props: ['son_message'],  // 数组形式
+      props: {
+        // 01. 类型限制
+        son_movies: Array,
+        // 02. 提供默认值
+        son_message: {
+          type: String,
+          default: '默认值',  // 未从父组件传值则使用默认值
+          required: true,   // 必填的字符串
+          validator: function(value) {
+            // 自定义验证函数
+          }
+        }
+      },
+         
+      data() {
+        return {}
+      },
+      methods: { 
+
+      },
+    }
+    const app = new Vue({
+      el: '#app',
+      data: {
+        message: '测试用',
+        movies: ['海贼王', '123', '23', '123', '斗破苍穹']
+      },
+      computed: {
+        
+      },
+      filter: {
+
+      },
+      components: {
+        // 局部组件, 使用必须先注册
+        // 标签名: 构造器
+        cpn,
+      }
+    })
+  </script>
+</body>
+
+</html>
